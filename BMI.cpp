@@ -12,19 +12,26 @@ bool isValidWeight(double weight) {
 }
 
 bool isValidHeight(double height) {
-    return (height >= 54.6 && height <= 272);
+    return (height >= 0.55 && height <= 2.72);
 }
 
 string getHealthCondition(double bmi) {
-    if (bmi < 18.5) {
-        return "Underweight";
-    } else if (bmi >= 18.5 && bmi < 24.9) {
-        return "Normal weight";
-    } else if (bmi >= 24.9 && bmi < 29.9) {
-        return "Overweight";
-    } else {
-        return "Obese";
+    string healthCondition;
+    switch (static_cast<int>(bmi)) {
+        case 0 ... 18:
+            healthCondition = "Underweight";
+            break;
+        case 19 ... 24:
+            healthCondition = "Normal weight";
+            break;
+        case 25 ... 29:
+            healthCondition = "Overweight";
+            break;
+        default:
+            healthCondition = "Obese";
+            break;
     }
+    return healthCondition;
 }
 
 int main() {
@@ -33,7 +40,7 @@ int main() {
     cout << "Enter weight (kg): ";
     cin >> weight;
 
-    cout << "Enter height (cm): ";
+    cout << "Enter height (m): ";
     cin >> height;
 
     if (!isValidWeight(weight) || !isValidHeight(height)) {
