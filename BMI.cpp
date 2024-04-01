@@ -16,22 +16,20 @@ bool isValidHeight(double height) {
 }
 
 string getHealthCondition(double bmi) {
-    string healthCondition;
-    switch (static_cast<double>(bmi)) {
-        case 0 ... 18.5:
-            healthCondition = "Underweight";
+    switch (static_cast<int>(bmi)) {
+        case 0 ... 18:
+            return "Underweight";
             break;
-        case 18.5 ... 24.9:
-            healthCondition = "Normal weight";
+        case 19 ... 24:
+            return "Normal weight";
             break;
-        case 25 ... 29.9:
-            healthCondition = "Overweight";
+        case 25 ... 29:
+            return "Overweight";
             break;
         default:
-            healthCondition = "Obese";
+            return "Obese";
             break;
     }
-    return healthCondition;
 }
 
 int main() {
